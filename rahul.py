@@ -1,11 +1,14 @@
 #using impoet keyword for access files from another file
 from spy12 import*
 from steganography.steganography import Steganography
+from datetime import datetime
+now=datetime.now()
+
 
 
 s_mess = ['*********my name is rahul*********','*******Good Evening****, ',' Sir']
 #display a message on screen
-print "**********HELLO********"
+print (" \033[4m  HELLO   \033[0m ")
 
 
 
@@ -61,22 +64,22 @@ def add_status(current_status_message):
 
 #decleration of add_friend function and creation of a dictionary
 def add_friend():
-    n_friend = Spy('','',0,0.0)
+    new_friend = Spy('','',0,0.0)
     #accessing dictionary values
-    n_friend.name = raw_input("Please add your friend's name: ")
-    n_friend.salutation = raw_input("Are they Mr. or Ms.?: ")
+    new_friend.name = raw_input("Please add your friend's name: ")
+    new_friend.salutation = raw_input("Are they Mr. or Ms.?: ")
 
-    n_friend.name = n_friend.salutation + " " + n_friend.name
+    new_friend.name = new_friend.salutation + " " + new_friend.name
 
-    n_friend.age = raw_input("Age?")
-    n_friend.age = int(n_friend.age)
+    new_friend.age = raw_input("Age?")
+    new_friend.age = int(new_friend.age)
 
-    n_friend.rating= raw_input("Spy rating?")
-    n_friend.rating = float(n_friend.rating)
+    new_friend.rating= raw_input("Spy rating?")
+    new_friend.rating = float(new_friend.rating)
 
 
-    if len(n_friend.name) > 0 and n_friend.age > 12 :
-        friends.append(n_friend)
+    if len(new_friend.name) > 0 and new_friend.age > 12 :
+        friends.append(new_friend)
         print 'Friend Added!'
     else:
         print 'Sorry! Invalid entry. We can,t add spy'
@@ -134,7 +137,7 @@ def read_message():
     print secret_text
 
 
-def read_chat_history():
+def _CHAT_HISTORY():
 
     read_for = select_a_friend()
 
@@ -181,18 +184,18 @@ def start_chat(spy):
             elif menu_choice==3:
                 select_a_friend()
 
-            elif menuchoice == 4:
+            elif menu_choice == 4:
 
                 send_message()
-            elif menuchoice == 5:
+            elif menu_choice == 5:
                 read_message()
             elif menu_choice == 6:
-                read_chat_history()
+                _CHAT_HISTORY()
 
             else:
                 show_menu = False
     else:
-        print 'Sorry you are not of the correct age to be a spy'
+        print '***Enter correct age of spy*****'
 
 if EXISTING.upper() == "Y":
     #function calling
@@ -200,7 +203,7 @@ if EXISTING.upper() == "Y":
 elif EXISTING.upper()=="N":
     spy=Spy('','',0,0.0)
     spy.name = raw_input("**** WELCOME TO SPY CHAT YOU FIRST TELL ME YOUR NAME***")
-
+#LENGTH FUNCTION RETURN LENGTH OF STRING
     if len(spy.name)>0:
 
        spy.salutation = raw_input("Should I call you Mr. or Ms.?: ")
