@@ -1,13 +1,13 @@
 #using impoet keyword for access files from another file
-from spy12 import *
+from spy12 import*
 from steganography.steganography import Steganography
-from datetime import datetime
+
 
 s_mess = ['*********my name is rahul*********','*******Good Evening****, ',' Sir']
 #display a message on screen
 print "**********HELLO********"
 
-friends=[]
+
 
 qst = "*****Do you want to continue as****** " + spy.salutation + " " + spy.name + " (Y/N)? "
 EXISTING= raw_input(qst)
@@ -15,10 +15,10 @@ EXISTING= raw_input(qst)
 #decleration of add status function
 def add_status(current_status_message):
 
-    updated_status_message = None
+    updated_status_message=None
 
 #if condition implementation
-    if spy.current_status_message != None:
+    if spy.current_status_message !=None:
         print 'Your current status message is %s \n' % (spy.current_status_message)
     else:
         print 'don\'t have any status message currently \n'
@@ -32,27 +32,28 @@ def add_status(current_status_message):
 #len() is used which is used to return the length of string
         if len(new_status) > 0:
             s_mess.append(new_status)
-            updated_status_message = new_status
+            updated_status_message=new_status
 
-    elif default.upper() == 'Y':
+
+    elif default.upper()=='Y':
 #count is used  to set counter
-        count_item = 1
+        count_item=1
 #implementation of for loop
         for message in s_mess:
             print '%d. %s' % (count_item, message)
-            count_item = count_item + 1
+            count_item=count_item + 1
 
-        message_selection = int(raw_input("\nChoose from the above messages "))
+        message_selection =int(raw_input("\nChoose from the above messages "))
 
 
         if len(s_mess) >= message_selection:
-            updated_status_message = s_mess[message_selection - 1]
+            updated_status_message=s_mess[message_selection - 1]
 
     else:
         print 'The option you chose is not valid! Press either y or n.'
 
-    if current_status_message :
-        print 'Your updated status message is: %s' % (current_status_message)
+    if updated_status_message :
+        print 'Your updated status message is: %s' % (updated_status_message)
     else:
         print 'You current don\'t have a status update'
 
@@ -61,7 +62,6 @@ def add_status(current_status_message):
 #decleration of add_friend function and creation of a dictionary
 def add_friend():
     n_friend = Spy('','',0,0.0)
-
     #accessing dictionary values
     n_friend.name = raw_input("Please add your friend's name: ")
     n_friend.salutation = raw_input("Are they Mr. or Ms.?: ")
@@ -101,18 +101,17 @@ def select_a_friend():
 #decleration of send_message function
 def send_message():
 #concept of steganography to send a secret meesage
-    friend_choice = select_a_friend()
+    friend_choice =select_a_friend()
 
     Original_image = raw_input("What is the name of the image?")
-    output_path = raw_input(":--")
+    output_path ="1.jpg"
     text = raw_input("What do you want to say? ")
-    Steganography.encode(Original_image, output_path, text)
+    Steganography.encode(Original_image,output_path,text)
 
-    new_chat =ChatMessage(text,True)
+    new_chat =Chat_Message(text,True)
 
 
-
-    friends.friend_choice.chats.append(new_chat)
+    friends[friend_choice].chats.append(new_chat)
 
     print "Your secret message image is ready!"
 
@@ -125,7 +124,7 @@ def read_message():
 
     secret_text = Steganography.decode(output_path)
 
-    new_chat =ChatMessage(secret_text,False)
+    new_chat =Chat_Message(secret_text,False)
 
 
 
@@ -145,6 +144,7 @@ def read_chat_history():
         if chat.sent_by_me:
             print '[%s] %s: %s' % (chat.time.strftime("%d %B %Y"), 'You said:', chat.message)
         else:
+
             print '[%s] %s said: %s' % (chat.time.strftime("%d %B %Y"), friends[read_for].name, chat.message)
 
 
@@ -198,7 +198,7 @@ if EXISTING.upper() == "Y":
     #function calling
     start_chat(spy)
 elif EXISTING.upper()=="N":
-    spy = Spy('','',0,0.0)
+    spy=Spy('','',0,0.0)
     spy.name = raw_input("**** WELCOME TO SPY CHAT YOU FIRST TELL ME YOUR NAME***")
 
     if len(spy.name)>0:
