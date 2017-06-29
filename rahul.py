@@ -2,18 +2,18 @@
 from spy12 import*
 from steganography.steganography import Steganography
 from datetime import datetime
+from termcolor import colored
 now=datetime.now()
 
 
 
-s_mess = ['*********my name is rahul*********','*******Good Evening****, ',' Sir']
+s_mess = ['my name is rahul','Good Evening, ',' Sir']
 #display a message on screen
-print (" \033[4m  HELLO   \033[0m ")
 
 
 
-qst = "*****Do you want to continue as****** " + spy.salutation + " " + spy.name + " (Y/N)? "
-EXISTING= raw_input(qst)
+QUESTION = "*****Do you want to continue as****** " + spy.salutation + " " + spy.name + " (Y/N)? "
+EXISTING= raw_input(QUESTION)
 
 #decleration of add status function
 def add_status(current_status_message):
@@ -145,10 +145,10 @@ def _CHAT_HISTORY():
 
     for chat in friends[read_for].chats:
         if chat.sent_by_me:
-            print '[%s] %s: %s' % (chat.time.strftime("%d %B %Y"), 'You said:', chat.message)
+            print colored(chat.time.strftime("%d %B %Y"),'red')+"Name->>"+ colored(friends[read_for].name,"blue")+'You said:'+ colored(chat.message,"green")
         else:
 
-            print '[%s] %s said: %s' % (chat.time.strftime("%d %B %Y"), friends[read_for].name, chat.message)
+            print '[%s] %s said: %s' % (chat.time.strftime("%d %B %Y"), friends[read_for].name, chat.message,)
 
 
 
@@ -170,7 +170,7 @@ def start_chat(spy):
         show_menu = True
 #while loop implementation
         while show_menu:
-            menu_choices = "what you want to do\n 1. ***Add a status update*** \n 2. ***Add a friend****\n 3.***select a friend*** \n 4. ***Send a secret message** \n 5. ***Read a secret message ****\n 6. ***read Chats from a user*** \n 7. **8Close Application** \n"
+            menu_choices = "what you want to do\n 1. ***Add a status update*** \n 2. ***Add a friend****\n 3.***select a friend*** \n 4. ***Send a secret message** \n 5. ***Read a secret message ****\n 6. ***read Chats from a user*** \n 7. **Close Application** \n"
             menu_choice =int(raw_input(menu_choices))
 
 

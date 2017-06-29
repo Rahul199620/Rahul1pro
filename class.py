@@ -15,5 +15,5 @@ class student:
 name=student()
 name.setmyname('shivam','walia',25)
 name.printname()
-
+#love you
 
